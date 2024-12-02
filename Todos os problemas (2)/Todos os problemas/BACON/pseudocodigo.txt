@@ -1,0 +1,54 @@
+ALGORITMO "Problema do Caixeiro Viajante Simplificado"
+
+FUNÇÃO distancia(cidade1, cidade2)
+    RETORNAR RAIZ_QUADRADA((cidade2.x - cidade1.x)^2 + (cidade2.y - cidade1.y)^2)
+FIM_FUNÇÃO
+
+FUNÇÃO calcular_distancia_total(rota, cidades)
+    distancia_total ← 0
+    IMPRIMIR "Rota: "
+    PARA i DE 0 ATÉ TAMANHO(rota) - 2 FAÇA
+        cidade_atual ← cidades[rota[i]]
+        cidade_proxima ← cidades[rota[i + 1]]
+        dist ← distancia(cidade_atual, cidade_proxima)
+        distancia_total ← distancia_total + dist
+        IMPRIMIR "(rota[i] -> rota[i + 1]) Distância: dist km | "
+    FIM_PARA
+
+    cidade_origem ← cidades[rota[0]]
+    cidade_final ← cidades[rota[último]]
+    dist_retorno ← distancia(cidade_final, cidade_origem)
+    distancia_total ← distancia_total + dist_retorno
+
+    IMPRIMIR "(rota[último] -> rota[0]) Distância de retorno: dist_retorno km | "
+    IMPRIMIR "Distância total: distancia_total km"
+
+    RETORNAR distancia_total
+FIM_FUNÇÃO
+
+# Definir as coordenadas das cidades
+cidades ← [(0, 0), (1, 5), (2, 8), (3, 3), (4, 7), (5, 6), (6, 2), (7, 5), (8, 9), (9, 4)]
+
+# Gerar todas as permutações possíveis de rotas (exceto cidade 0)
+rotas_possiveis ← TODAS_PERMUTAÇÕES(1 ATÉ TAMANHO(cidades) - 1)
+
+# Inicializar variáveis para a melhor rota
+menor_distancia ← INFINITO
+melhor_rota ← NULO
+
+# Avaliar todas as rotas possíveis
+PARA CADA rota EM rotas_possiveis FAÇA
+    rota_completa ← [0] + rota
+    distancia_total ← calcular_distancia_total(rota_completa, cidades)
+
+    SE distancia_total < menor_distancia ENTÃO
+        menor_distancia ← distancia_total
+        melhor_rota ← rota_completa
+    FIM_SE
+FIM_PARA
+
+# Exibir o melhor resultado
+IMPRIMIR "Melhor rota: melhor_rota"
+IMPRIMIR "Distância total da melhor rota: menor_distancia km"
+
+FIM_ALGORITMO
