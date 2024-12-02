@@ -1,0 +1,39 @@
+Função resolver_n_damas(n):
+    Definir função eh_valido(tabuleiro, linha, coluna):
+        Para i de 0 até linha - 1:
+            Se tabuleiro[i] == coluna OU 
+               |tabuleiro[i] - coluna| == |i - linha|:
+                Retornar Falso
+        Retornar Verdadeiro
+
+    Definir função voltar(tabuleiro, linha):
+        Se linha == n:
+            Adicionar uma cópia de tabuleiro em soluções
+            Retornar
+        Para coluna de 0 até n - 1:
+            Se eh_valido(tabuleiro, linha, coluna):
+                tabuleiro[linha] <- coluna
+                voltar(tabuleiro, linha + 1)
+                tabuleiro[linha] <- -1 
+
+    Inicializar lista soluções como vazia
+    Inicializar tabuleiro como lista de tamanho n com valores -1
+    Chamar voltar(tabuleiro, 0)
+    Retornar soluções
+
+Função imprimir_tabuleiro(tabuleiro):
+    n <- tamanho do tabuleiro
+    Para cada linha em tabuleiro:
+        Criar linha_visual como uma lista de "." com tamanho n
+        linha_visual[linha] <- "Q"
+        Exibir linha_visual como uma string
+    Exibir uma linha vazia
+
+Início:
+    n <- 6
+    soluções <- resolver_n_damas(n)
+    Exibir "Total de soluções para", n, "damas:", tamanho de soluções
+    Para i de 1 até tamanho de soluções:
+        Exibir "Solução", i
+        imprimir_tabuleiro(soluções[i - 1])
+Fim

@@ -1,0 +1,16 @@
+Análise de Tempo: 
+
+Método razao_paginas_por_mb: 
+O cálculo da razão de páginas por MB é uma operação simples de divisão, o que tem uma complexidade de O(1) por arquivo. 
+
+Ordenação de Arquivos: 
+A ordenação da lista de arquivos pela razão de páginas por MB possui uma complexidade de tempo de O(n log n), onde n é o número de arquivos. 
+
+Seleção de Arquivos para o Pendrive: 
+O loop para selecionar os arquivos e adicionar ao pendrive percorre todos os arquivos uma vez. A complexidade desse passo é O(n), onde n é o número de arquivos. 
+
+Exibição dos Resultados: 
+Exibir os resultados também é um processo que percorre todos os arquivos selecionados, com complexidade de O(n). 
+
+Complexidade de Tempo Total: 
+O tempo total é dominado pela ordenação, portanto, a complexidade de tempo total é O(n log n), onde n é o número de arquivos. 

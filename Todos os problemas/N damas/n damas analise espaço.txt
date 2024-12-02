@@ -1,0 +1,38 @@
+1. def resolver_n_damas(n):                                                      # 1                      O(1)
+2.     def eh_valido(tabuleiro, linha, coluna):                                    # 1                      O(1)
+3.         for i in range(linha):                                                  # linha                   O(linha)
+4.             if tabuleiro[i] == coluna or abs(tabuleiro[i] - coluna) == abs(i - linha):  # linha             O(1)
+5.             return False                                                       # 1                      O(1)
+6.         return True                                                            # 1                      O(1)
+7.     def voltar(tabuleiro, linha):                                               # 1                      O(1)
+8.         if linha == n:                                                          # 1                      O(1)
+9.             solucoes.append(tabuleiro[:])                                       # 1                      O(n) - Copia do tabuleiro
+10.             return                                                             # 1                      O(1)
+11.         for coluna in range(n):                                                # n                      O(1)
+12.             if eh_valido(tabuleiro, linha, coluna):                            # n                      O(linha)
+13.                 tabuleiro[linha] = coluna                                       # 1                      O(1)
+14.                 voltar(tabuleiro, linha + 1)                                   # 1                      O(1)
+15.                 tabuleiro[linha] = -1                                          # 1                      O(1)
+16.     solucoes = []                                                              # 1                      O(1)
+17.     tabuleiro = [-1] * n                                                       # 1                      O(n)
+18.     voltar(tabuleiro, 0)                                                       # 1                      O(1)
+19.     return solucoes                                                           # 1                      O(1)
+
+20. def imprimir_tabuleiro(tabuleiro):                                             # 1                      O(1)
+21.     n = len(tabuleiro)                                                        # 1                      O(1)
+22.     for linha in tabuleiro:                                                    # n                      O(1)
+23.         linha_visual = ["." for _ in range(n)]                                  # 1                      O(n)
+24.         linha_visual[linha] = "Q"                                              # 1                      O(1)
+25.         print(" ".join(linha_visual))                                          # 1                      O(n)
+26.     print("\n")                                                                # 1                      O(1)
+
+27. n = 5                                                                          # 1                      O(1)
+28. solucoes = resolver_n_damas(n)                                                # 1                      O(n * n) - (n soluções de tamanho n)
+
+29. print(f"Total de soluções para {n} damas: {len(solucoes)}\n")                 # 1                      O(1)
+30. for i, solucao in enumerate(solucoes, start=1):                               # n                      O(1)
+31.     print(f"Solução {i}:")                                                     # 1                      O(1)
+32.     imprimir_tabuleiro(solucao)                                               # 1                      O(n²) (imprimir n soluções de tamanho n)
+
+
+S(N) = O(n²)

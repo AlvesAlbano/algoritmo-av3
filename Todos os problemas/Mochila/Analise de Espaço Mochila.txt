@@ -1,0 +1,25 @@
+Análise de Espaço Problema da Mochila:
+                                                                                                                    custo              #vezes
+1. class Mochila:                                                                                                     1                   O(1)          
+2.    @staticmethod                                                                                                   1                   O(1)     
+3.    def mochila(capacidade:int,Items:list[Item]):                                                                   1                   O(1)
+4.        n:int = len(Items)                                                                                          1                   O(1)
+5.        matriz:int = []                                                                                             1                   O(1)
+6.        for z in range(n+1):                                                                                        n+1                 O(1)
+7.            linha = [0] * (capacidade + 1)                                                                          n+1                 O(capacidade)
+8.            matriz.append(linha)                                                                                    n+1                 O(1)
+9.        for i in range(1,n+1):                                                                                      n                   O(1)
+10.            for j in range(1,capacidade+1):                                                                        n*capacidade        O(1)
+11.                if Items[i-1].peso <= j:                                                                           n*capacidade        O(1)     
+12.                    matriz[i][j] = max(Items[i-1].valor + matriz[i-1][j - Items[i-1].peso], matriz[i-1][j])        n*capacidade        O(1)   
+13.                else:                                                                                              n*capacidade        O(1)
+14.                    matriz[i][j] = matriz[i-1][j]                                                                  n*capacidade        O(1)
+15.                print(f"Subproblema: i={i}, j={j}, matriz[{i}][{j}]={matriz[i][j]}")                               n*capacidade        O(1)
+16.        # print("matriz final")                                                                                         linha comentada
+17.        # for z in matriz:                                                                                              linha comentada
+18.        #     print(z)                                                                                                  linha comentada          
+19.        return matriz[n][capacidade]                                                                               1                    O(1)
+
+Simplificando a soma dos Espaços: 0(1) + O(n*capacidade)
+Como O(n*capacidade) representa uma matriz bidimensional ela consome mais espaço que O(1) que representa variáveis e loops
+Logo, temos o espaço total como S(n, capacidade) = O(n*capacidade)

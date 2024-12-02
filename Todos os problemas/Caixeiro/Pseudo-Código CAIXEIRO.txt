@@ -1,0 +1,25 @@
+Função distancia(cidade1, cidade2):
+    Retornar a distância Euclidiana entre cidade1 e cidade2
+
+Função calcular_distancia_total(rota, cidades):
+    Inicialize distancia_total como 0
+    Para cada par de cidades consecutivas na rota:
+        Calcule a distância entre as cidades consecutivas
+        Adicione a distância ao distancia_total
+    Calcule a distância de retorno à cidade de origem
+    Adicione essa distância de retorno ao distancia_total
+    Retorne a distancia_total
+
+Função principal:
+    Defina as coordenadas de todas as cidades
+    Gere todas as permutações possíveis das cidades (exceto a cidade de origem)
+    Inicialize menor_distancia com infinito
+    Inicialize melhor_rota como None
+    
+    Para cada rota possível:
+        Adicione a cidade de origem (0) no início da rota
+        Calcule a distancia_total para essa rota
+        Se a distancia_total for menor que menor_distancia:
+            Atualize menor_distancia e melhor_rota
+    
+    Exiba a melhor rota e a distancia_total da melhor rota

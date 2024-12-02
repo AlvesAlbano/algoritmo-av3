@@ -1,0 +1,18 @@
+    Armazenar Permutações
+        O gerador itertools.permutations é eficiente, consumindo espaço apenas para armazenar uma permutação por vez.
+        Espaço: O(n)O(n).
+
+    Armazenar Coordenadas das Cidades
+        As coordenadas das nn cidades são armazenadas na lista cidades.
+        Espaço: O(n)O(n).
+
+    Armazenar Rota Atual e Melhor Rota
+        A rota atual e a melhor rota têm tamanho nn cada.
+        Espaço: O(n)O(n).
+
+Espaço Total
+
+    Dominado por O(n)O(n), já que as permutações são geradas iterativamente.
+
+Complexidade
+    O(n)

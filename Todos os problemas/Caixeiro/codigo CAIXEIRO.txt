@@ -1,0 +1,56 @@
+import itertools
+import math
+
+# Função para calcular a distância Euclidiana entre duas cidades
+def distancia(cidade1, cidade2):
+    return math.sqrt((cidade2[0] - cidade1[0]) ** 2 + (cidade2[1] - cidade1[1]) ** 2)
+
+# Função para calcular o custo total de uma rota e exibir as distâncias
+def calcular_distancia_total(rota, cidades):
+    distancia_total = 0
+    print("Rota: ", end="")
+    for i in range(len(rota) - 1):
+        cidade_atual = cidades[rota[i]]
+        cidade_proxima = cidades[rota[i + 1]]
+        dist = distancia(cidade_atual, cidade_proxima)
+        distancia_total += dist
+        print(f"({rota[i]} -> {rota[i + 1]}) Distância: {dist:.2f}km", end=" | ")
+
+    # Adiciona a distância para retornar à cidade de origem
+    cidade_origem = cidades[rota[0]]
+    cidade_final = cidades[rota[-1]]
+    dist_retorno = distancia(cidade_final, cidade_origem)
+    distancia_total += dist_retorno
+
+    print(f"({rota[-1]} -> {rota[0]}) Distância de retorno: {dist_retorno:.2f}km", end=" | ")
+    print(f"Distância total: {distancia_total:.2f}km\n")
+
+    return distancia_total
+
+# Definir as coordenadas das 10 cidades (exemplo com coordenadas aleatórias)
+cidades = [
+    (0, 0), (1, 5), (2, 8), (3, 3), (4, 7), 
+    (5, 6), (6, 2), (7, 5), (8, 9), (9, 4)
+]
+
+# Gerar todas as permutações possíveis de rotas entre as cidades (ignorando a cidade de origem, por exemplo, cidade 0)
+rotas_possiveis = itertools.permutations(range(1, len(cidades)))
+
+# Inicializar variáveis para armazenar a melhor rota e a menor distância
+menor_distancia = float('inf')
+melhor_rota = None
+
+# Avaliar todas as rotas possíveis
+for rota in rotas_possiveis:
+    # Adicionar a cidade de origem (0) no início da rota
+    rota_completa = [0] + list(rota)
+    distancia_total = calcular_distancia_total(rota_completa, cidades)
+
+    # Verificar se essa rota é a melhor (menor distância)
+    if distancia_total < menor_distancia:
+        menor_distancia = distancia_total
+        melhor_rota = rota_completa
+
+# Exibir o melhor resultado
+print("Melhor rota:", melhor_rota)
+print(f"Distância total da melhor rota: {menor_distancia:.2f}km")

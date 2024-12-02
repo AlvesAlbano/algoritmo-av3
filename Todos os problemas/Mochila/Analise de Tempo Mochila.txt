@@ -1,0 +1,28 @@
+Análise de Tempo Problema da Mochila:
+O número de comparações em cada linha sera o custo, e a quantidade de vezes que é repetida a linha sera o #vezes
+                                                                                                                    custo              #vezes
+1. class Mochila:                                                                                                     0                   1          
+2.    @staticmethod                                                                                                   0                   1          
+3.    def mochila(capacidade:int,Items:list[Item]):                                                                   0                   1
+4.        n:int = len(Items)                                                                                          0                   1
+5.        matriz:int = []                                                                                             0                   1
+6.        for z in range(n+1):                                                                                        1                 n + 1
+7.            linha = [0] * (capacidade + 1)                                                                          0                   n
+8.            matriz.append(linha)                                                                                    0                   n
+9.        for i in range(1,n+1):                                                                                      1                   n
+10.            for j in range(1,capacidade+1):                                                                        1             (n x capacidade)
+11.                if Items[i-1].peso <= j:                                                                           1             (n x capacidade) - 1
+12.                    matriz[i][j] = max(Items[i-1].valor + matriz[i-1][j - Items[i-1].peso], matriz[i-1][j])        0             (n x capacidade) - 2  
+13.                else:                                                                                              0                    ?
+14.                    matriz[i][j] = matriz[i-1][j]                                                                  0                    ?
+15.                print(f"Subproblema: i={i}, j={j}, matriz[{i}][{j}]={matriz[i][j]}")                               0             (n x capacidade) - 1
+16.        # print("matriz final")                                                                                         linha comentada
+17.        # for z in matriz:                                                                                              linha comentada
+18.        #     print(z)                                                                                                  linha comentada             
+19.        return matriz[n][capacidade]                                                                               0                    1
+
+subtotal = custo de cada linha * #vezes de cada linha
+subtotal = n + 1 + n + (n * capacidade) + (n*capacidade)−1
+subtotal = 2(n*capacidade) + 2n
+termo dominante (o que mais cresce): (n* capacidade)
+portanto temos: O(n×capacidade)

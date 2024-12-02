@@ -1,0 +1,22 @@
+    Gerar Permutações
+        A função itertools.permutations gera todas as permutações das cidades (excluindo a cidade de origem).
+        Número de permutações: (n−1)!(n−1)!.
+        Complexidade: O((n−1)!)O((n−1)!).
+
+    Calcular Distâncias para Cada Rota
+        Para cada permutação, calcula-se a distância entre as cidades na rota.
+        Total de nn chamadas para a função distancia por rota (cidade de origem ++ todas da permutação ++ retorno).
+        Número total de cálculos: n⋅(n−1)!n⋅(n−1)!.
+        Complexidade: O(n⋅(n−1)!)O(n⋅(n−1)!).
+
+    Comparar e Atualizar Melhor Rota
+        Comparação e atualização da menor distância é feita para cada permutação.
+        Total de comparações: (n−1)!(n−1)!.
+        Complexidade: O((n−1)!)O((n−1)!).
+
+Tempo Total
+
+    Dominado por O(n⋅(n−1)!)O(n⋅(n−1)!), devido ao cálculo de distâncias.
+
+Complexidade
+    O(n⋅(n−1)!)O(n⋅(n−1)!)

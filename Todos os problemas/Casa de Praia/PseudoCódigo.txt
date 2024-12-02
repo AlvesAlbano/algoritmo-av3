@@ -1,0 +1,48 @@
+01: Classe PDFArquivos:
+02:     Método __init__(nome, paginas, peso):
+03:         Inicializar nome, paginas e peso do arquivo PDF
+04:     
+05:     Método razao_paginas_por_mb():
+06:         Retornar paginas / peso
+
+07: Classe CasaDePraia:
+08:     Método estático escolher_arquivos_pendrive(capacidade, arquivos):
+09:         Imprimir "Passo 1: Arquivos fornecidos inicialmente:"
+10:         Para cada arquivo em arquivos:
+11:             Imprimir nome, páginas, peso e razão de páginas por MB do arquivo
+
+12:         Imprimir "Passo 2: Ordenando os arquivos pela razão de páginas por MB (maior para menor)..."
+13:         Ordenar arquivos por razão de páginas por MB em ordem decrescente
+14:         Imprimir "Arquivos ordenados:"
+15:         Para cada arquivo em arquivos:
+16:             Imprimir nome e razão de páginas por MB do arquivo
+
+17:         Inicializar capacidade_atual como 0
+18:         Inicializar arquivos_selecionados como lista vazia
+
+19:         Imprimir "Passo 3: Selecionando os arquivos para o pendrive:"
+20:         Para cada arquivo em arquivos:
+21:             Se capacidade_atual + peso do arquivo <= capacidade:
+22:                 Incrementar capacidade_atual com peso do arquivo
+23:                 Adicionar arquivo a arquivos_selecionados
+24:                 Imprimir "Adicionado: {nome do arquivo}, Peso acumulado: {capacidade_atual}/{capacidade}"
+25:             Caso contrário:
+26:                 Imprimir "Não é possível adicionar: {nome do arquivo} (Capacidade excedida)"
+27:                 Interromper o loop
+
+28:         Imprimir "Passo 4: Resultados finais:"
+29:         Imprimir "Arquivos selecionados para o pendrive:"
+30:         Para cada arquivo em arquivos_selecionados:
+31:             Imprimir nome do arquivo
+32:         Imprimir "Capacidade total utilizada: {capacidade_atual}/{capacidade}"
+
+33: Se __name__ == "__main__":
+34:     Definir lista arquivos com PDFs:
+35:         - Algoritmos 101 (300 páginas, 10 MB)
+36:         - Estruturas de Dados (500 páginas, 20 MB)
+37:         - Teoria da Computação (200 páginas, 5 MB)
+38:         - Análise de Algoritmos (400 páginas, 15 MB)
+39:         - Redes Neurais (150 páginas, 8 MB)
+40:     
+41:     Definir capacidade_pendrive como 30 MB
+42:     Chamar CasaDePraia.escolher_arquivos_pendrive(capacidade_pendrive, arquivos)

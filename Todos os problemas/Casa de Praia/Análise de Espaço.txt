@@ -1,0 +1,36 @@
+Análise de Espaço: 
+Espaço utilizado pelas instâncias de PDFArquivos: 
+Cada objeto PDFArquivos ocupa um espaço constante, ou seja, O(1) por objeto. 
+Para n arquivos, o espaço necessário para armazenar todos os arquivos é O(n). 
+Espaço usado pela lista de arquivos ordenados: 
+A lista de arquivos ordenados usa O(n) espaço, pois contém n objetos. 
+Espaço usado pelos arquivos selecionados: 
+A lista de arquivos selecionados também usa O(n) espaço no pior caso (quando todos os arquivos são selecionados). 
+Complexidade de Espaço Total: 
+O espaço total necessário é O(n), pois estamos armazenando duas listas de tamanho n (arquivos ordenados e arquivos selecionados), e cada objeto PDF ocupa um espaço constante. 
+ 
+ 
+Análise de complexidade do algoritmo 
+ 
+Complexidade Total 
+Passo 1: Exibição dos Arquivos 
+Complexidade: O(n) 
+Passo 2: Ordenação dos Arquivos 
+Complexidade: O(n log n) 
+Passo 3: Seleção dos Arquivos 
+Complexidade: O(n) 
+Passo 4: Exibição dos Arquivos Selecionados 
+Complexidade: O(n) 
+A complexidade total do algoritmo é dada pela soma das complexidades de todas as etapas. Como a operação de ordenação O(n log n) é a mais custosa, ela domina a análise assintótica global. 
+Portanto, a complexidade total é: 
+ 
+            O(n)+O(nlogn)+O(n)+O(n)=O(nlogn)
+
+Explicação Detalhada 
+Exibição dos arquivos: O loop percorre n arquivos e imprime suas informações, resultando em uma complexidade linear O(n). 
+Ordenação: O passo de ordenação usa Timsort, que tem complexidade O(n log n) no pior caso. Esse passo é dominante na análise, pois é a operação mais custosa. 
+Seleção dos arquivos para o pendrive: O loop percorre até n arquivos e realiza verificações constantes. No pior caso, isso resulta em uma complexidade O(n). 
+Exibição dos arquivos selecionados: Similar ao passo 1, o loop percorre até n arquivos selecionados e imprime seus nomes, resultando em uma complexidade O(n). 
+A operação dominante é a ordenção, portanto a complexidade assintótica total é O(n log n). 
+Conclusão 
+A complexidade assintótica total do algoritmo é O(n log n), devido à operação de ordenação. As outras operações, como exibir arquivos e selecionar os arquivos para o pendrive, têm complexidade linear O(n), mas elas não afetam o comportamento assintótico dominante do algoritmo, que é determinado pela ordenação.
